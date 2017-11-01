@@ -7,10 +7,12 @@
         app:showAsAction="ifRoom|collapseActionView"
         android:icon="@android:drawable/ic_menu_search"
         android:title="Search" />
-    <!-- "Switch Map / List ", should appear as action button if possible -->
+    <!-- Switch Map / List  -->
+
     <item
-        android:id="@+id/action_map"
+        android:id="@+id/toggle_map_list"
+        app:showAsAction="ifRoom|collapseActionView"
         android:icon="@drawable/ic_map_black_24dp"
-        android:title="@string/action_map"
-        app:showAsAction="ifRoom"/>
+        android:title="Toggle"/>
+
 </menu>

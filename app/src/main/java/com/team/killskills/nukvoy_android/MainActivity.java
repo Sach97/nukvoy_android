@@ -41,4 +41,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         return super.onCreateOptionsMenu(menu);
-    }}
+    }
+
+    boolean toggle;
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //toggle = true;
+        switch (item.getItemId()) {
+            case R.id.toggle_map_list:
+
+                if(toggle){
+                    //change your view and sort it by Alphabet
+                    item.setIcon(R.drawable.ic_map_black_24dp);
+                    item.setTitle("Map");
+                    toggle=false;
+                }else{
+                    //change your view and sort it by Date of Birth
+                    item.setIcon(R.drawable.ic_playlist_add_black_24dp);
+                    item.setTitle("List");
+                    toggle=true;
+                }
+                return true;
+
+
+
+        }
+        return super.onOptionsItemSelected(item);
+
+
+    }
+
+}
