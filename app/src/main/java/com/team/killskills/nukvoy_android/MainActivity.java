@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
     private static final String TAG = MainActivity.class.getSimpleName();
     private RestClient restClient;
     private DBClient dbClient;
-    private RecyclerView rvCountry;
+    private RecyclerView rvAirport;
     private AirportAdapter adapter;
     private ArrayList<Airport> airportList = new ArrayList<>();
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
         init();
         initViews();
 
-        new pullCountryTask().execute();
+        new pullAirportTask().execute();
     }
 
     @Override
@@ -63,16 +63,16 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
         svSearch = findViewById(R.id.svSearch);
         pbLoading = findViewById(R.id.pbLoading);
         llNoData = findViewById(R.id.llNoData);
-        rvCountry = findViewById(R.id.rvCountry);
+        rvAirport = findViewById(R.id.rvCountry);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        rvCountry.setLayoutManager(mLayoutManager);
-        rvCountry.setItemAnimator(new DefaultItemAnimator());
+        rvAirport.setLayoutManager(mLayoutManager);
+        rvAirport.setItemAnimator(new DefaultItemAnimator());
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.space));
-        rvCountry.addItemDecoration(dividerItemDecoration);
+        rvAirport.addItemDecoration(dividerItemDecoration);
 
         adapter = new AirportAdapter(this, airportList);
-        rvCountry.setAdapter(adapter);
+        rvAirport.setAdapter(adapter);
     }
 
     private void configureSearchView() {
@@ -105,13 +105,13 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
         }
     }
 
-    private void showVoiceSearchResult(String query) {
+  /*  private void showVoiceSearchResult(String query) {
         Intent intent = new Intent(this, VoiceSearchResultActivity.class);
         intent.putExtra("list", airportList);
         intent.putExtra("query", query);
         startActivity(intent);
     }
-
+*/
     @Override
     public void onClick(Airport airport) {
         Intent intent = new Intent(this, AirportDetailsActivity.class);
@@ -120,27 +120,27 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
     }
 
     public void onTryAgainClicked(View view) {
-        new pullCountryTask().execute();
+        new pullAirportTask().execute();
     }
 
-    class pullCountryTask extends AsyncTask<Void, Void, Void> {
+    class pullAirportTask extends AsyncTask<Void, Void, Void> {
 
         private void showProgress() {
             pbLoading.setVisibility(View.VISIBLE);
-            rvCountry.setVisibility(View.GONE);
+            rvAirport.setVisibility(View.GONE);
             llNoData.setVisibility(View.GONE);
         }
 
         private void showNoData() {
             pbLoading.setVisibility(View.GONE);
-            rvCountry.setVisibility(View.GONE);
+            rvAirport.setVisibility(View.GONE);
             llNoData.setVisibility(View.VISIBLE);
         }
 
         private void showData() {
             pbLoading.setVisibility(View.GONE);
             llNoData.setVisibility(View.GONE);
-            rvCountry.setVisibility(View.VISIBLE);
+            rvAirport.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -152,9 +152,9 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
         @Override
         protected Void doInBackground(Void... voids) {
             if (restClient.isOnline()) {
-                List<AirportDto> countryDtoList = (List<AirportDto>) restClient.get(BuildConfig.url, AirportDto.class, Boolean.TRUE);
-                if(countryDtoList!=null) {
-                    boolean isInserted = dbClient.insertAirport(countryDtoList);
+                List<AirportDto> airportDtoList = (List<AirportDto>) restClient.get(BuildConfig.url, AirportDto.class, Boolean.TRUE);
+                if(airportDtoList!=null) {
+                    boolean isInserted = dbClient.insertAirport(airportDtoList);
                     Logger.logInfo(TAG, "isInserted: " + isInserted);
                 }
             }

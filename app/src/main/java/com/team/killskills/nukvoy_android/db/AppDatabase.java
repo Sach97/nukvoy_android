@@ -25,7 +25,7 @@ import com.team.killskills.nukvoy_android.BuildConfig;
 import com.team.killskills.nukvoy_android.dao.AirportDao;
 import com.team.killskills.nukvoy_android.model.Airport;
 
-@Database(entities = {Airport.class}, version = 1)
+@Database(entities = {Airport.class}, version = 3,exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
@@ -35,7 +35,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public static AppDatabase getInMemoryDatabase(Context context) {
         if (INSTANCE == null) {
-            INSTANCE =Room.databaseBuilder(context,AppDatabase.class,DATABASE_NAME).build();
+            INSTANCE =Room.databaseBuilder(context,AppDatabase.class,DATABASE_NAME).fallbackToDestructiveMigration().build();
         }
         return INSTANCE;
     }

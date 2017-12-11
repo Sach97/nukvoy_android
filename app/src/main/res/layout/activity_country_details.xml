@@ -43,7 +43,7 @@
                     android:scaleType="fitStart" />
 
                 <TextView
-                    android:id="@+id/tvCountryName"
+                    android:id="@+id/tvAirportName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -54,7 +54,7 @@
                     android:id="@+id/tvCapitalName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tvCountryName"
+                    android:layout_below="@id/tvAirportName"
                     android:layout_toRightOf="@+id/ivFlag"
                     android:textSize="14sp" />
 

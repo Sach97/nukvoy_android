@@ -17,11 +17,11 @@ import java.util.Arrays;
 public class Airport implements Serializable{
     @PrimaryKey
     @NonNull
+    public String iataCode;
     public String cityCode;
     public String lat;
     public String lon;
     public String countryCode;
-    public String iataCode;
     public String name;
     public String region;
     public String routes;

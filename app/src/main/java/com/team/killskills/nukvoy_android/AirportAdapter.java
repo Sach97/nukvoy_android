@@ -32,7 +32,7 @@ public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.MyViewHo
     public class MyViewHolder extends RecyclerView.ViewHolder {
         View rootView;
         TextView tvCountryName, tvCapitalName;
-        ImageView ivFlag;
+        //ImageView ivFlag;
 
         public MyViewHolder(View view) {
             super(view);
@@ -43,10 +43,10 @@ public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.MyViewHo
     }
 
 
-    public AirportAdapter(Context context, List<Airport> countryList) {
+    public AirportAdapter(Context context, List<Airport> airportList) {
         this.context = context;
-        this.airportList = countryList;
-        this.filteredAirportList = countryList;
+        this.airportList = airportList;
+        this.filteredAirportList = airportList;
         clickListener = (ClickListener) context;
     }
 
@@ -74,9 +74,9 @@ public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.MyViewHo
         });
     }
 
-    private void loadFlag(ImageView imageView, String url) {
+    /*private void loadFlag(ImageView imageView, String url) {
         Uri uri = Uri.parse(url);
-    }
+    }*/
 
     public Airport getItem(int position) {
         return filteredAirportList.get(position);

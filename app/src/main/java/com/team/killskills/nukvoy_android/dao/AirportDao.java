@@ -23,6 +23,6 @@ public interface AirportDao {
     List<Airport> getAll();
 
     @Insert(onConflict = REPLACE)
-    void insert(Airport Airport);
+    void insert(Airport airport);
 
 }

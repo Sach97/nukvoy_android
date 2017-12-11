@@ -9,10 +9,6 @@ import com.team.killskills.nukvoy_android.model.Airport;
 
 import java.util.List;
 
-/**
- * Created by CropIn-Shailendra on 11/24/2017.
- */
-
 public class DBClient {
     private static final String TAG = DBClient.class.getSimpleName();
     private Context context;
