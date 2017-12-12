@@ -25,7 +25,7 @@ import com.team.killskills.nukvoy_android.BuildConfig;
 import com.team.killskills.nukvoy_android.dao.AirportDao;
 import com.team.killskills.nukvoy_android.model.Airport;
 
-@Database(entities = {Airport.class}, version = 5,exportSchema = false)
+@Database(entities = {Airport.class}, version = 6,exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
