@@ -31,14 +31,14 @@ public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         View rootView;
-        TextView tvCountryName, tvCapitalName;
+        TextView tvAirportName, tvAirportRegion;
         //ImageView ivFlag;
 
         public MyViewHolder(View view) {
             super(view);
             rootView = view;
-            tvCountryName = view.findViewById(R.id.tvAirportName);
-            tvCapitalName = view.findViewById(R.id.tvAirportRegion);
+            tvAirportName = view.findViewById(R.id.tvAirportName);
+            tvAirportRegion = view.findViewById(R.id.tvAirportRegion);
         }
     }
 
@@ -61,8 +61,8 @@ public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.MyViewHo
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         final Airport airport = filteredAirportList.get(position);
-        holder.tvCountryName.setText(airport.name);
-        holder.tvCapitalName.setText(airport.region);
+        holder.tvAirportName.setText(airport.name);
+        holder.tvAirportRegion.setText(airport.region);
 
         //loadFlag(holder.ivFlag, country.flag);
 
@@ -74,9 +74,6 @@ public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.MyViewHo
         });
     }
 
-    /*private void loadFlag(ImageView imageView, String url) {
-        Uri uri = Uri.parse(url);
-    }*/
 
     public Airport getItem(int position) {
         return filteredAirportList.get(position);

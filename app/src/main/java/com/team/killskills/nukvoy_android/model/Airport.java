@@ -36,7 +36,7 @@ public class Airport implements Serializable{
         lon = airportDto.lon;
         countryCode = airportDto.countryCode;
         iataCode = airportDto.iataCode;
-        region = airportDto.region;
+        region = airportDto.region.replace("_"," ");
         routes = Arrays.toString(airportDto.routes);
     }
 }
