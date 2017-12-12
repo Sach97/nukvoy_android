@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
         svSearch = findViewById(R.id.svSearch);
         pbLoading = findViewById(R.id.pbLoading);
         llNoData = findViewById(R.id.llNoData);
-        rvAirport = findViewById(R.id.rvCountry);
+        rvAirport = findViewById(R.id.rvAirport);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         rvAirport.setLayoutManager(mLayoutManager);
         rvAirport.setItemAnimator(new DefaultItemAnimator());

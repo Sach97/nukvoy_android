@@ -16,9 +16,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-/**
- * Created by Shailendra on 20/2/2017.
- */
+
 public class RestClient {
     public final static String HTTP_RESPONSE = "http-response";
     public final static String HTTP_RESPONSE_CODE = "http-status";

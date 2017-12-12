@@ -8,19 +8,17 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tvCountryName"
+        android:id="@+id/tvAirportName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/ivFlag"
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/tvCapitalName"
+        android:id="@+id/tvAirportRegion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/ivFlag"
-        android:layout_below="@id/tvCountryName"
+        android:layout_below="@id/tvAirportName"
         android:textSize="14sp" />
 
 

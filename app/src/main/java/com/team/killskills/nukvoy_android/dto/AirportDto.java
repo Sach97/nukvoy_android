@@ -13,7 +13,7 @@ public class AirportDto {
     public String cityCode;
     @JsonField(name = "airports_coordinates_latitude")
     public String lat;
-    @JsonField(name = "airports_coordinates_lon")
+    @JsonField(name = "airports_coordinates_longitude")
     public String lon;
     @JsonField(name = "airports_countryCode")
     public String countryCode;

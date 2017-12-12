@@ -37,8 +37,8 @@ public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.MyViewHo
         public MyViewHolder(View view) {
             super(view);
             rootView = view;
-            tvCountryName = view.findViewById(R.id.tvCountryName);
-            tvCapitalName = view.findViewById(R.id.tvCapitalName);
+            tvCountryName = view.findViewById(R.id.tvAirportName);
+            tvCapitalName = view.findViewById(R.id.tvAirportRegion);
         }
     }
 

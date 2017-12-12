@@ -47,16 +47,16 @@ public class VoiceSearchResultActivity extends AppCompatActivity implements Airp
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        RecyclerView rvCountry = findViewById(R.id.rvCountry);
+        RecyclerView rvAirport = findViewById(R.id.rvAirport);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        rvCountry.setLayoutManager(mLayoutManager);
-        rvCountry.setItemAnimator(new DefaultItemAnimator());
+        rvAirport.setLayoutManager(mLayoutManager);
+        rvAirport.setItemAnimator(new DefaultItemAnimator());
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.space));
-        rvCountry.addItemDecoration(dividerItemDecoration);
+        rvAirport.addItemDecoration(dividerItemDecoration);
 
         adapter = new AirportAdapter(this, airportList);
-        rvCountry.setAdapter(adapter);
+        rvAirport.setAdapter(adapter);
     }
 
     private void fetchExtras() {

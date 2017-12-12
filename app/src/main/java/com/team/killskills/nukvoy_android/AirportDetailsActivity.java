@@ -19,18 +19,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.team.killskills.nukvoy_android.handlers.DBClient;
 import com.team.killskills.nukvoy_android.model.Airport;
 
-import java.util.List;
-
-
-/**
- * Created by CropIn-Shailendra on 11/25/2017.
- */
 
 public class AirportDetailsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private DBClient dbClient;
     private Airport airport;
-    private TextView tvCountryName, tvCapital;
+    private TextView tvAirportName, tvAirportRegion;
     private SupportMapFragment mapFragment;
 
     @Override
@@ -56,7 +50,7 @@ public class AirportDetailsActivity extends AppCompatActivity implements OnMapRe
         super.onPostCreate(savedInstanceState);
         initViews();
         initMap();
-        renderViews();
+        renderHeaders();
     }
 
     private void fetchExtras() {
@@ -73,8 +67,8 @@ public class AirportDetailsActivity extends AppCompatActivity implements OnMapRe
     private void initViews() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Details");
-        tvCountryName = findViewById(R.id.tvCountryName);
-        tvCapital = findViewById(R.id.tvCapitalName);
+        tvAirportName = findViewById(R.id.tvAirportName);
+        tvAirportRegion = findViewById(R.id.tvAirportRegion);
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapFragment);
     }
 
@@ -100,13 +94,9 @@ public class AirportDetailsActivity extends AppCompatActivity implements OnMapRe
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, MAX_ZOOMING_VALUE));
     }
 
-    private void renderViews() {
-        renderHeaders();
-    }
-
     private void renderHeaders() {
-        tvCountryName.setText(airport.name);
-        tvCapital.setText(airport.region);
+        tvAirportName.setText(airport.name);
+        tvAirportRegion.setText(airport.region);
     }
 
 
