@@ -9,10 +9,6 @@ import com.team.killskills.nukvoy_android.dto.AirportDto;
 import java.io.Serializable;
 import java.util.Arrays;
 
-/**
- * Created by CropIn-Shailendra on 11/24/2017.
- */
-
 @Entity
 public class Airport implements Serializable{
     /*@PrimaryKey(autoGenerate = true)

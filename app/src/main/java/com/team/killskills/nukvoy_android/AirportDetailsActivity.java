@@ -1,8 +1,5 @@
 package com.team.killskills.nukvoy_android;
 
-import android.graphics.drawable.PictureDrawable;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -40,7 +37,7 @@ public class AirportDetailsActivity extends AppCompatActivity implements OnMapRe
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_country_details);
+        setContentView(R.layout.activity_airport_details);
         fetchExtras();
         init();
     }

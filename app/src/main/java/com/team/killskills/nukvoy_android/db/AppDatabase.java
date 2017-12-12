@@ -21,7 +21,6 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-import com.team.killskills.nukvoy_android.BuildConfig;
 import com.team.killskills.nukvoy_android.dao.AirportDao;
 import com.team.killskills.nukvoy_android.model.Airport;
 
