@@ -7,7 +7,9 @@ import android.support.annotation.NonNull;
 import com.team.killskills.nukvoy_android.dto.AirportDto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @Entity
 public class Airport implements Serializable{

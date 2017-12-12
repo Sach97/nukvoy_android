@@ -1,11 +1,15 @@
 package com.team.killskills.nukvoy_android;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -16,13 +20,24 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.team.killskills.nukvoy_android.handlers.DBClient;
 import com.team.killskills.nukvoy_android.model.Airport;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class AirportDetailsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
+    private static final String TAG = AirportDetailsActivity.class.getSimpleName();
     private DBClient dbClient;
     private Airport airport;
     private TextView tvAirportName, tvAirportRegion;
     private SupportMapFragment mapFragment;
+    private Inputs inputs;
+    //private UserInputs userInputs;
+    //private List<String> iataCodeList;
+    private Button btnChoices;
+
+    private ArrayList<Inputs> myGlobalArray;
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -66,7 +81,34 @@ public class AirportDetailsActivity extends AppCompatActivity implements OnMapRe
         getSupportActionBar().setTitle("Details");
         tvAirportName = findViewById(R.id.tvAirportName);
         tvAirportRegion = findViewById(R.id.tvAirportRegion);
+        btnChoices = findViewById(R.id.btnChoices);
+        btnChoices.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addToGlobalList();
+            }
+        });
+
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapFragment);
+    }
+
+    private void addToGlobalList() {
+
+       /* userInputs.setIataCodeList(airport.iataCode.toString());
+        iataCodeList = userInputs.getIataCodeList();
+        Toast.makeText(this, "x:"+ iataCodeList, Toast.LENGTH_SHORT).show();*/
+        /*Intent intent = new Intent(AirportDetailsActivity.this, MainActivity.class);
+        intent.putExtra("inputs", new InputsParcelable("1",airport.iataCode.toString()));*/
+
+        /*Bundle data = getIntent().getExtras();
+        InputsParcelable inputs = (InputsParcelable) data.getParcelable("inputs");
+        Toast.makeText(this, inputs.toString(), Toast.LENGTH_SHORT).show();*/
+
+        myGlobalArray = ((AirportApplication)getApplicationContext()).myGlobalArray;
+        myGlobalArray.add(new Inputs("1",airport.iataCode.toString()));
+        Logger.logError(TAG,myGlobalArray.toString());
+        Toast.makeText(this, myGlobalArray.toString(), Toast.LENGTH_SHORT).show();
+
     }
 
     private void initMap() {
@@ -92,8 +134,10 @@ public class AirportDetailsActivity extends AppCompatActivity implements OnMapRe
     }
 
     private void renderHeaders() {
+
         tvAirportName.setText(airport.name);
         tvAirportRegion.setText(airport.region);
+
     }
 
 
