@@ -15,6 +15,8 @@ import java.util.Arrays;
 
 @Entity
 public class Airport implements Serializable{
+    /*@PrimaryKey(autoGenerate = true)
+    public int _id;*/
     @PrimaryKey
     @NonNull
     public String iataCode;
