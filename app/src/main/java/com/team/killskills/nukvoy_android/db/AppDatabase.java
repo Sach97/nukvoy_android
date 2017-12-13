@@ -22,15 +22,19 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
 import com.team.killskills.nukvoy_android.dao.AirportDao;
+import com.team.killskills.nukvoy_android.dao.RouteDao;
 import com.team.killskills.nukvoy_android.model.Airport;
+import com.team.killskills.nukvoy_android.model.Route;
 
-@Database(entities = {Airport.class}, version = 7,exportSchema = false)
+@Database(entities = {Airport.class, Route.class}, version = 10,exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
 
     private static String DATABASE_NAME = "airports.db";
+
     public abstract AirportDao airportModel();
+    public abstract RouteDao routeModel();
 
     public static AppDatabase getInMemoryDatabase(Context context) {
         if (INSTANCE == null) {

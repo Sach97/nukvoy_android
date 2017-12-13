@@ -4,6 +4,7 @@ import com.bluelinelabs.logansquare.annotation.JsonField;
 import com.bluelinelabs.logansquare.annotation.JsonObject;
 
 import java.util.Arrays;
+import java.util.List;
 
 
 @JsonObject(fieldDetectionPolicy = JsonObject.FieldDetectionPolicy.NONPRIVATE_FIELDS_AND_ACCESSORS)
@@ -22,9 +23,10 @@ public class AirportDto {
     public String name;
     @JsonField(name = "airports_regionCode")
     public String region;
-    public String[] routes;
+    public List<RouteDto> routes;
 
 
+    //toString method for debugging inserting in database
     @Override
     public String toString() {
         return "AirportDto{" +
@@ -35,7 +37,7 @@ public class AirportDto {
                 ", iataCode='" + iataCode + '\'' +
                 ", name='" + name + '\'' +
                 ", region='" + region + '\'' +
-                ", routes='" + Arrays.toString(routes) + '\'' +
+                ", routes='" + routes +
                 '}';
     }
 }

@@ -21,10 +21,10 @@ import android.widget.Toast;
 import com.team.killskills.nukvoy_android.dto.AirportDto;
 import com.team.killskills.nukvoy_android.handlers.DBClient;
 import com.team.killskills.nukvoy_android.model.Airport;
+import com.team.killskills.nukvoy_android.model.Inputs;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import okhttp3.Call;
@@ -62,11 +62,11 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
         new pullAirportTask().execute();
 
 
-        try {
+        /*try {
             run();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     @Override

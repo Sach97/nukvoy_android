@@ -1,7 +1,9 @@
-package com.team.killskills.nukvoy_android;
+package com.team.killskills.nukvoy_android.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import com.team.killskills.nukvoy_android.Logger;
 
 import static android.content.ContentValues.TAG;
 
@@ -19,8 +21,8 @@ public class Inputs {
 
         this.days=days;
         this.iataCode = iataCode;
-        Logger.logError("Inputs",days.toString());
-        Logger.logError("Inputs",iataCode.toString());
+        Logger.logError("Inputs iataCode",days.toString());
+        Logger.logError("Inputs iataCode",iataCode.toString());
     }
 
 

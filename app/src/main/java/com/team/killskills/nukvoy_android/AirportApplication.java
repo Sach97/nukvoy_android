@@ -2,6 +2,8 @@ package com.team.killskills.nukvoy_android;
 
 import android.app.Application;
 
+import com.team.killskills.nukvoy_android.model.Inputs;
+
 import java.util.ArrayList;
 
 /**

@@ -13,14 +13,19 @@ import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 
 @Dao
 public interface AirportDao {
-    @Query("select * from Airport where iataCode = :iataCode")
-    Airport getAirportByCode(String iataCode);
-
-    @Query("select * from Airport where name = :name")
-    Airport getAirportByName(String name);
 
     @Query("select * from Airport order by name asc")
     List<Airport> getAll();
+
+ /*   @Query("select iataCode,routes from Airport where iataCode = :iataCode")
+    List<Route> getAirportRoutesByCode(String iataCode);*/
+
+
+    /*@Query("select * from Airport where name = :name")
+    Airport getAirportByName(String name);
+
+    @Query("select routes from Airport where iataCode = :iataCode")
+    List<String> getRoutesByCode(String iataCode);*/
 
     @Insert(onConflict = REPLACE)
     void insert(Airport airport);

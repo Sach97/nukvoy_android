@@ -1,6 +1,6 @@
 package com.team.killskills.nukvoy_android;
 
-import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,8 +17,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.team.killskills.nukvoy_android.dto.AirportDto;
+import com.team.killskills.nukvoy_android.dto.RouteDto;
 import com.team.killskills.nukvoy_android.handlers.DBClient;
 import com.team.killskills.nukvoy_android.model.Airport;
+import com.team.killskills.nukvoy_android.model.Inputs;
+import com.team.killskills.nukvoy_android.model.Route;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +32,7 @@ import java.util.List;
 public class AirportDetailsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private static final String TAG = AirportDetailsActivity.class.getSimpleName();
-    private DBClient dbClient;
+    private DBClient db;
     private Airport airport;
     private TextView tvAirportName, tvAirportRegion;
     private SupportMapFragment mapFragment;
@@ -73,7 +77,7 @@ public class AirportDetailsActivity extends AppCompatActivity implements OnMapRe
     }
 
     private void init() {
-        dbClient = new DBClient(this);
+        db = new DBClient(this);
     }
 
     private void initViews() {
@@ -86,28 +90,34 @@ public class AirportDetailsActivity extends AppCompatActivity implements OnMapRe
             @Override
             public void onClick(View view) {
                 addToGlobalList();
+                //new AddRoutesAsyncTask().execute(airport.iataCode.toString());
             }
         });
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapFragment);
     }
 
+/*    class AddRoutesAsyncTask extends AsyncTask<String, Void, Void> {
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            List<RouteDto> routeDtoList = (List<RouteDto>) db.getRoutes(airport.iataCode);
+            String[] destinations = airportRoutes.split(",");
+            if(routeDtoList!=null) {
+                boolean isInserted = db.insertRoutes(routeDtoList);
+                Logger.logInfo(TAG, "isInserted: " + isInserted);
+            }
+            return null;
+        }
+    }*/
+
     private void addToGlobalList() {
 
-       /* userInputs.setIataCodeList(airport.iataCode.toString());
-        iataCodeList = userInputs.getIataCodeList();
-        Toast.makeText(this, "x:"+ iataCodeList, Toast.LENGTH_SHORT).show();*/
-        /*Intent intent = new Intent(AirportDetailsActivity.this, MainActivity.class);
-        intent.putExtra("inputs", new InputsParcelable("1",airport.iataCode.toString()));*/
-
-        /*Bundle data = getIntent().getExtras();
-        InputsParcelable inputs = (InputsParcelable) data.getParcelable("inputs");
-        Toast.makeText(this, inputs.toString(), Toast.LENGTH_SHORT).show();*/
 
         myGlobalArray = ((AirportApplication)getApplicationContext()).myGlobalArray;
         myGlobalArray.add(new Inputs("1",airport.iataCode.toString()));
         Logger.logError(TAG,myGlobalArray.toString());
-        Toast.makeText(this, myGlobalArray.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,airport.name.toString()+ " airport successfully added to your choices", Toast.LENGTH_SHORT).show();
 
     }
 
