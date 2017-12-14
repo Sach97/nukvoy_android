@@ -1,11 +1,9 @@
 package com.team.killskills.nukvoy_android.model;
 
-import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-import com.team.killskills.nukvoy_android.dto.RouteDto;
 
 import java.io.Serializable;
 

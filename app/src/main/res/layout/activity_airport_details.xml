@@ -53,11 +53,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <Button android:id="@+id/btnChoices"
-                    android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnChoices"
+                android:background="@color/colorPrimary"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/white"/>
+                <Button android:id="@+id/btnGo"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/btnChoices"
+                    android:text="@string/btnGo"
                     android:background="@color/colorPrimary"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="30dp"
                     android:textColor="@android:color/white"/>
             </LinearLayout>
 

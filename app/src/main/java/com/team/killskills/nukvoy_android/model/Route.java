@@ -8,10 +8,6 @@ import android.support.annotation.NonNull;
 
 import com.team.killskills.nukvoy_android.dto.RouteDto;
 
-/**
- * Created by CropIn-Shailendra on 11/24/2017.
- */
-
 @Entity
 public class Route {
     @PrimaryKey(autoGenerate = true)

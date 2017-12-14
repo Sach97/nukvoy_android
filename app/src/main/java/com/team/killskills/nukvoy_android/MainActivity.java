@@ -12,15 +12,20 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.team.killskills.nukvoy_android.dto.AirportDto;
 import com.team.killskills.nukvoy_android.handlers.DBClient;
 import com.team.killskills.nukvoy_android.model.Airport;
+import com.team.killskills.nukvoy_android.model.InputRoute;
 import com.team.killskills.nukvoy_android.model.Inputs;
 
 import java.io.IOException;
@@ -56,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         init();
         initViews();
 
@@ -68,6 +74,46 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
             e.printStackTrace();
         }*/
     }
+
+/*    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_buttons, menu);
+
+       return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                // User chose the "Settings" item, show the app settings UI...
+                return true;
+
+            case R.id.action_favorite:
+               *//* boolean isInserted = dbClient.getInnerJoin();
+                Logger.logInfo(TAG, "isInserted: " + isInserted);*//*
+                new AsyncTask<Void, Void, Void>(){
+
+                    @Override
+                    protected Void doInBackground(Void... voids) {
+                        List<InputRoute> routes = dbClient.getInnerJoin();
+                        for (InputRoute inputs : routes) {
+                            Logger.logInfo(TAG, "routes isFetched: " + inputs.toString());
+                        }
+                        //Toast.makeText(MainActivity.this, "hola", Toast.LENGTH_SHORT).show();
+                        return null;
+                    }
+                };
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+    }*/
 
     @Override
     protected void onResume(){
@@ -148,6 +194,8 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
         rvAirport.setAdapter(adapter);
     }
 
+
+
     private void configureSearchView() {
         svSearch.setVisibility(View.VISIBLE);
         svSearch.setQueryHint(getString(R.string.search_here));
@@ -174,21 +222,9 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
     protected void onNewIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            //showVoiceSearchResult(query);
         }
-        /*Bundle  data = intent.getExtras();
-        InputsParcelable inputs = (InputsParcelable) data.getParcelable("inputs");
-        Logger.logInfo(TAG, inputs.toString());*/
 
     }
-
-    /*  private void showVoiceSearchResult(String query) {
-          Intent intent = new Intent(this, VoiceSearchResultActivity.class);
-          intent.putExtra("list", airportList);
-          intent.putExtra("query", query);
-          startActivity(intent);
-      }
-  */
     @Override
     public void onClick(Airport airport) {
         Intent intent = new Intent(this, AirportDetailsActivity.class);

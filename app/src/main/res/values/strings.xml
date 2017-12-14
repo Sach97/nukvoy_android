@@ -8,8 +8,11 @@
     <string name="loading">loading...</string>
     <string name="try_again">Try again</string>
     <string name="btnChoices">ADD TO CHOICES</string>
+    <string name="btnGo">SEE RESULTS</string>
     <string name="unable_to_load_the_countries">Unable to load the Airports!</string>
     <string name="voice_language">english</string>
     <string name="details">Details</string>
     <string name="search_your_country">Search your airport</string>
+    <string name="action_plane" />
+    <string name="action_settings" />
 </resources>

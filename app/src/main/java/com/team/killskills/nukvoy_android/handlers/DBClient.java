@@ -8,6 +8,7 @@ import com.team.killskills.nukvoy_android.dto.AirportDto;
 import com.team.killskills.nukvoy_android.dto.RouteDto;
 import com.team.killskills.nukvoy_android.model.Airport;
 import com.team.killskills.nukvoy_android.model.InnerJoin;
+import com.team.killskills.nukvoy_android.model.InputRoute;
 import com.team.killskills.nukvoy_android.model.Route;
 
 import java.util.List;
@@ -48,6 +49,11 @@ public class DBClient {
                 db.routeModel().insert(new Route(airportDto.iataCode, routeDto));
         }
         return true;
+    }
+
+    public List<InputRoute> getInnerJoin(){
+        return db.innerjoinModel().getInnerJoin();
+
     }
 
     public boolean insertJoins(String iataCode) {

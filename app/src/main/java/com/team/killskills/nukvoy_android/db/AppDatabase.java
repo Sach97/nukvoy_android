@@ -28,7 +28,7 @@ import com.team.killskills.nukvoy_android.model.Airport;
 import com.team.killskills.nukvoy_android.model.InnerJoin;
 import com.team.killskills.nukvoy_android.model.Route;
 
-@Database(entities = {Airport.class, Route.class, InnerJoin.class}, version = 23,exportSchema = false)
+@Database(entities = {Airport.class, Route.class, InnerJoin.class}, version = 24,exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
