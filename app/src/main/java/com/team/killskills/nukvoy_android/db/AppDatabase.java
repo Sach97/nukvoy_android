@@ -22,6 +22,7 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
 import com.team.killskills.nukvoy_android.dao.AirportDao;
+import com.team.killskills.nukvoy_android.dao.InnerJoinDao;
 import com.team.killskills.nukvoy_android.dao.RouteDao;
 import com.team.killskills.nukvoy_android.model.Airport;
 import com.team.killskills.nukvoy_android.model.InnerJoin;
@@ -36,6 +37,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract AirportDao airportModel();
     public abstract RouteDao routeModel();
+    public abstract InnerJoinDao innerjoinModel();
 
     public static AppDatabase getInMemoryDatabase(Context context) {
         if (INSTANCE == null) {

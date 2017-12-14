@@ -5,6 +5,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import com.team.killskills.nukvoy_android.dto.RouteDto;
+
 import java.io.Serializable;
 
 
@@ -33,4 +35,9 @@ public class InnerJoin implements Serializable {
     public void setId(@NonNull long id) {
         this.id = id;
     }
+
+    public InnerJoin(@NonNull String IataCode){
+        iataCode = IataCode;
+    }
+    public InnerJoin(){}
 }

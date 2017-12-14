@@ -17,16 +17,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.team.killskills.nukvoy_android.dto.AirportDto;
-import com.team.killskills.nukvoy_android.dto.RouteDto;
 import com.team.killskills.nukvoy_android.handlers.DBClient;
 import com.team.killskills.nukvoy_android.model.Airport;
+import com.team.killskills.nukvoy_android.model.InnerJoin;
 import com.team.killskills.nukvoy_android.model.Inputs;
-import com.team.killskills.nukvoy_android.model.Route;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 
 public class AirportDetailsActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -90,26 +86,22 @@ public class AirportDetailsActivity extends AppCompatActivity implements OnMapRe
             @Override
             public void onClick(View view) {
                 addToGlobalList();
-                //new AddRoutesAsyncTask().execute(airport.iataCode.toString());
+                new AsyncTask<Void, Void, Void>(){
+
+                    @Override
+                    protected Void doInBackground(Void... voids) {
+                        boolean isInserted = db.insertJoins(airport.iataCode);
+                        Logger.logInfo(TAG, "Joins isInserted: " + isInserted);
+                        return null;
+                    }
+                };
             }
         });
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapFragment);
     }
 
-/*    class AddRoutesAsyncTask extends AsyncTask<String, Void, Void> {
 
-        @Override
-        protected Void doInBackground(String... strings) {
-            List<RouteDto> routeDtoList = (List<RouteDto>) db.getRoutes(airport.iataCode);
-            String[] destinations = airportRoutes.split(",");
-            if(routeDtoList!=null) {
-                boolean isInserted = db.insertRoutes(routeDtoList);
-                Logger.logInfo(TAG, "isInserted: " + isInserted);
-            }
-            return null;
-        }
-    }*/
 
     private void addToGlobalList() {
 

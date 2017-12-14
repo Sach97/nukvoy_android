@@ -7,8 +7,11 @@ import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 import com.team.killskills.nukvoy_android.model.InnerJoin;
+import com.team.killskills.nukvoy_android.model.Route;
 
 import java.util.List;
+
+import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 
 /**
  * Created by Sacha on 14/12/2017.
@@ -39,4 +42,7 @@ public interface InnerJoinDao {
 
     @Delete
     void deleteAll(InnerJoin... innerJoins);
+
+    @Insert(onConflict = REPLACE)
+    void insert(InnerJoin innerJoin);
 }
