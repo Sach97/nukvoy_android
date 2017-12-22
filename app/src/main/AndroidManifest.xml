@@ -41,12 +41,6 @@
         </activity>
 
         <activity
-            android:name=".VoiceSearchResultActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
-
-        <activity
             android:name=".AirportDetailsActivity"
             android:screenOrientation="portrait" />
 

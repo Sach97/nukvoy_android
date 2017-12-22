@@ -20,5 +20,6 @@
     Once you have your key (it starts with "AIza"), replace the "google_maps_key"
     string in this file.
     -->
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBcmVlYS64szr91ya7NHYHEvXVK81gACSc</string>
+    <!--TODO: fix this error Google Maps Android API: Google Maps Android API v2 only supports devices with OpenGL ES 2.0 and above-->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBCG-WNXCuNp1qja2r6M9x9lqi9QQ91lHY</string>
 </resources>

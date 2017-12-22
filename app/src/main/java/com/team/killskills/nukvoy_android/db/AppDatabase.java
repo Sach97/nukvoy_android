@@ -35,7 +35,7 @@ To do this, we need to define an abstract class that extends RoomDatabase.
 This class is annotated with @Database, lists the entities contained in the database, and the DAOs which access them.
 The database version has to be increased by 1, from the initial value, so in our case, it will be 24.*/
 
-@Database(entities = {Airport.class, Route.class, InnerJoin.class}, version = 24,exportSchema = false)
+@Database(entities = {Airport.class, Route.class, InnerJoin.class}, version = 25,exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;

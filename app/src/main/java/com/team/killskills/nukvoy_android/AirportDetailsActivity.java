@@ -216,10 +216,12 @@ public class AirportDetailsActivity extends AppCompatActivity implements OnMapRe
         final float MAX_ZOOMING_VALUE = 5f;
 
         //We are using the lat,lon retrieved from extras
-        String strlat = airport.lat;
+        /*String strlat = airport.lat;
         String strlon = airport.lon;
         double lat = Double.parseDouble(strlat);
-        double lon = Double.parseDouble(strlon);
+        double lon = Double.parseDouble(strlon);*/
+        double lat = airport.lat;
+        double lon =  airport.lon;
         LatLng latLng = new LatLng(lat, lon);
         googleMap.getUiSettings().setAllGesturesEnabled(true);
         googleMap.getUiSettings().setZoomControlsEnabled(Boolean.TRUE);

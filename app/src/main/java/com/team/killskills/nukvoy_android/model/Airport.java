@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/*
-Annotating the class with @Entity and use the tableName property to set the name of the table.
-*/
 
 @Entity
 public class Airport implements Serializable{
@@ -22,8 +19,8 @@ public class Airport implements Serializable{
     @NonNull
     public String iataCode;
     public String cityCode;
-    public String lat;
-    public String lon;
+    public double lat;
+    public double lon;
     public String countryCode;
     public String name;
     public String region;

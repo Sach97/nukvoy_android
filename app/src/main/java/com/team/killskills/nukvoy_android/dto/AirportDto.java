@@ -8,18 +8,17 @@ import java.util.List;
 
 /*
  LoganSquare claims to be the fastest JSON parsing and serializing library available for Android outperforming GSON and Jackson’s Databind library by 400% or more.
-By default, LoganSquare assumes that the JSON field name will match your Java variable’s name unless the “name” parameter has been used in the field’s “@JsonField” annotation
 */
 
 
 @JsonObject(fieldDetectionPolicy = JsonObject.FieldDetectionPolicy.NONPRIVATE_FIELDS_AND_ACCESSORS)
 public class AirportDto {
-    @JsonField(name = "airports_cityCode") //This is the format of the fields the response of the API
+    @JsonField(name = "airports_cityCode")
     public String cityCode;
     @JsonField(name = "airports_coordinates_latitude")
-    public String lat;
+    public double lat;
     @JsonField(name = "airports_coordinates_longitude")
-    public String lon;
+    public double lon;
     @JsonField(name = "airports_countryCode")
     public String countryCode;
     @JsonField(name = "airports_iataCode")
