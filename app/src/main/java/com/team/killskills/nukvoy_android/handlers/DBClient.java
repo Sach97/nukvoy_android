@@ -30,10 +30,6 @@ public class DBClient {
         return db.airportModel().getAll();
     }
 
-/*    public List<Route> getRoutes(String iataCode) {
-        return db.airportModel().getAirportRoutesByCode(iataCode);
-    }*/
-
 
     public boolean insertAirport(List<AirportDto> airportDtoList) {
         for (AirportDto airportDto : airportDtoList) {
@@ -60,26 +56,5 @@ public class DBClient {
         db.innerjoinModel().insert(new InnerJoin(iataCode));
         return true;
     }
-
-
-   /* private boolean insertCurrency(CountryDto countryDto) {
-        for (CurrencyDto currencyDto : countryDto.currencies) {
-            db.currencyModel().insert(new Currency(countryDto.alpha3Code, currencyDto));
-        }
-        return true;
-    }
-*/
-  /* public boolean insertRoutes(String iataCode) {
-       *//*String airportRoutes = db.airportModel().getAirportRoutesByCode(iataCode);
-       Logger.logError(TAG,airportRoutes);
-       String[] destinations = airportRoutes.split(",");
-       for (String destination : destinations) {
-           db.routeModel().insert(new Route(iataCode,destination));
-       }*//*
-       db.routeModel().insert(new Route(iataCode,destination));
-       return true;
-   }*/
-
-
 
 }

@@ -66,54 +66,8 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
         initViews();
 
         new pullAirportTask().execute();
-
-
-        /*try {
-            run();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
     }
 
-/*    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.action_buttons, menu);
-
-       return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                // User chose the "Settings" item, show the app settings UI...
-                return true;
-
-            case R.id.action_favorite:
-               *//* boolean isInserted = dbClient.getInnerJoin();
-                Logger.logInfo(TAG, "isInserted: " + isInserted);*//*
-                new AsyncTask<Void, Void, Void>(){
-
-                    @Override
-                    protected Void doInBackground(Void... voids) {
-                        List<InputRoute> routes = dbClient.getInnerJoin();
-                        for (InputRoute inputs : routes) {
-                            Logger.logInfo(TAG, "routes isFetched: " + inputs.toString());
-                        }
-                        //Toast.makeText(MainActivity.this, "hola", Toast.LENGTH_SHORT).show();
-                        return null;
-                    }
-                };
-                return true;
-
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
-
-        }
-    }*/
 
     @Override
     protected void onResume(){
@@ -125,47 +79,6 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
         }
     }
 
-    void run() throws IOException {
-
-        /*myGlobalArray = ((AirportApplication)getApplicationContext()).myGlobalArray;
-        for (Inputs inputs : myGlobalArray) {
-            Logger.logInfo(TAG, inputs.getIataCode().toString());
-        }*/
-        OkHttpClient client = new OkHttpClient();
-        firstCity = "MADRID";
-        satartDate = "2017-02-03";
-        cities = "GRECE-LISBONNE";
-        days = "2-3";
-        routes = "GRECE-LISBONNE";
-        url =  "https://nameless-beach-74913.herokuapp.com/planner/startCity/"+firstCity+"/startDate/"+satartDate+"/cities/"+cities+"/days/"+days;
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                call.cancel();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-
-                final String myResponse = response.body().string();
-
-                MainActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(MainActivity.this,
-                                "Your Message"+myResponse, Toast.LENGTH_LONG).show();
-                    }
-                });
-
-            }
-        });
-
-    }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -173,11 +86,13 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
         hideSoftKeyboard();
     }
 
+    //Instantiate Database helper class and OkHttp helper class
     private void init() {
         restClient = new RestClient(this);
         dbClient = new DBClient(this);
     }
 
+    //Initiating views
     private void initViews() {
         svSearch = findViewById(R.id.svSearch);
         pbLoading = findViewById(R.id.pbLoading);
@@ -190,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.space));
         rvAirport.addItemDecoration(dividerItemDecoration);
 
-        adapter = new AirportAdapter(this, airportList);
+        adapter = new AirportAdapter(this, airportList); //Initiating the adapter
         rvAirport.setAdapter(adapter);
     }
 
@@ -212,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
 
             @Override
             public boolean onQueryTextChange(String query) {
-                adapter.getFilter().filter(query);
+                adapter.getFilter().filter(query); //SearchView filtering method invoked from adapter
                 return true;
             }
         });
@@ -225,10 +140,12 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
         }
 
     }
+
+
     @Override
     public void onClick(Airport airport) {
         Intent intent = new Intent(this, AirportDetailsActivity.class);
-        intent.putExtra("airport", airport);
+        intent.putExtra("airport", airport); //Passing the extra to the second Activity
         startActivity(intent);
     }
 
@@ -262,6 +179,7 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
             showProgress();
         }
 
+        //Async method to request the API and inserting all of the data inside our local SQL database
         @Override
         protected Void doInBackground(Void... voids) {
             if (restClient.isOnline()) {
@@ -298,6 +216,7 @@ public class MainActivity extends AppCompatActivity implements AirportAdapter.Cl
         }
     }
 
+    //Reseting database to null on each run for better debugging
     @Override
     protected void onDestroy() {
         super.onDestroy();

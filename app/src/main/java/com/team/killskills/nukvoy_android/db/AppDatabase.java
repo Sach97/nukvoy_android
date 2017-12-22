@@ -28,20 +28,29 @@ import com.team.killskills.nukvoy_android.model.Airport;
 import com.team.killskills.nukvoy_android.model.InnerJoin;
 import com.team.killskills.nukvoy_android.model.Route;
 
+/*
+So far, we have defined our Users table and its corresponding queries,
+but we haven’t yet created the database that brings these other pieces of Room together.
+To do this, we need to define an abstract class that extends RoomDatabase.
+This class is annotated with @Database, lists the entities contained in the database, and the DAOs which access them.
+The database version has to be increased by 1, from the initial value, so in our case, it will be 24.*/
+
 @Database(entities = {Airport.class, Route.class, InnerJoin.class}, version = 24,exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
+    private static String DATABASE_NAME = "airports.db"; //This is the name of the database as it will be stored in the device
 
-    private static String DATABASE_NAME = "airports.db";
-
+    //This abstract methods are required to for making DAO to work
     public abstract AirportDao airportModel();
     public abstract RouteDao routeModel();
     public abstract InnerJoinDao innerjoinModel();
 
     public static AppDatabase getInMemoryDatabase(Context context) {
         if (INSTANCE == null) {
+            //Builder for RoomDatabase
             INSTANCE =Room.databaseBuilder(context,AppDatabase.class,DATABASE_NAME).fallbackToDestructiveMigration().build();
+            //fallbackToDestructiveMigration method Allows Room to destructively recreate database tables if Migrations that would migrate old database schemas to the latest schema version are not found.
         }
         return INSTANCE;
     }

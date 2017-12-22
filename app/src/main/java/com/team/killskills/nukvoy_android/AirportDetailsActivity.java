@@ -35,7 +35,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-
+/*
+* The Second Activity of our Application, opened when we click on the ListView of our MainActivity
+*/
 public class AirportDetailsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private static final String TAG = AirportDetailsActivity.class.getSimpleName();
@@ -44,13 +46,11 @@ public class AirportDetailsActivity extends AppCompatActivity implements OnMapRe
     private TextView tvAirportName, tvAirportRegion;
     private SupportMapFragment mapFragment;
     private Inputs inputs;
-    //private UserInputs userInputs;
-    //private List<String> iataCodeList;
     private Button btnChoices;
     private Button btnGo;
     private ArrayList<Inputs> myGlobalArray;
 
-    //TODO
+    //TODO : put the button for the result here instead of the ugly button next to choices
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -95,7 +95,6 @@ public class AirportDetailsActivity extends AppCompatActivity implements OnMapRe
             Logger.logInfo(TAG, inputs.getIataCode().toString());
         }*/
         OkHttpClient client = new OkHttpClient();
-        //firstCity = "MADRID";
         String startDate = "2017-02-03";
         List<String> daysArr = new ArrayList<String>();
         List<String> citiesArr = new ArrayList<String>();
@@ -153,6 +152,8 @@ public class AirportDetailsActivity extends AppCompatActivity implements OnMapRe
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //TODO : this weird comment is maybe (for sure) the reason why the Inner Join doesn't work
                 /*new AsyncTask<Void, Void, Void>(){
 
                     @Override
@@ -165,17 +166,20 @@ public class AirportDetailsActivity extends AppCompatActivity implements OnMapRe
                         return null;
                     }
                 };*/
+
                 try {
                     run(myGlobalArray);
                 } catch (IOException e) {
                     e.printStackTrace();
-        }
+        } //TODO : delete this after resolving the inner join issue above
             }
         });
+
         btnChoices.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 addToGlobalList();
+                //Async method for inserting choices in database
                 new AsyncTask<Void, Void, Void>(){
 
                     @Override
@@ -210,9 +214,8 @@ public class AirportDetailsActivity extends AppCompatActivity implements OnMapRe
     @Override
     public void onMapReady(GoogleMap googleMap) {
         final float MAX_ZOOMING_VALUE = 5f;
-        /*String strLatLng = airport.latlng.replace("[", "");
-        strLatLng = strLatLng.replace("]", "");
-        String array[] = strLatLng.split(",");*/
+
+        //We are using the lat,lon retrieved from extras
         String strlat = airport.lat;
         String strlon = airport.lon;
         double lat = Double.parseDouble(strlat);

@@ -11,6 +11,7 @@ import static android.content.ContentValues.TAG;
  * Created by Sacha on 12/12/2017.
  */
 
+//Simple model used for send parameters to the API
 public class Inputs {
 
     private String days;

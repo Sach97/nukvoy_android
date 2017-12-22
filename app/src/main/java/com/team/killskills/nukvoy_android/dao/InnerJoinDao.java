@@ -18,6 +18,11 @@ import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
  * Created by Sacha on 14/12/2017.
  */
 
+/*
+  Creating Data Access Object
+  DAOs are responsible for defining the methods that access the database
+  */
+
 @Dao
 public interface InnerJoinDao {
 
@@ -32,17 +37,6 @@ public interface InnerJoinDao {
 
     @Query("SELECT * FROM innerjoin")
     List<InnerJoin> getAll();
-
-    /*@Query("SELECT note.id, note.title, note.description, category.name as categoryName " +
-            "FROM note " +
-            "LEFT JOIN category ON note.category_id = category.id")
-    List<CategoryNote> getCategoryNotes();
-
-    @Query("SELECT note.id, note.title, note.description, note.category_id " +
-            "FROM note " +
-            "LEFT JOIN category ON note.category_id = category.id " +
-            "WHERE note.id = :noteId")
-    CategoryNote getCategoryNote(long noteId);*/
 
     @Delete
     void deleteAll(InnerJoin... innerJoins);

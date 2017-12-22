@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 
 import java.io.Serializable;
 
+/*Set the primary key by adding the @PrimaryKey annotation to the correct fields — in our case, this is the ID of the User.*/
 
 @Entity(tableName = "innerjoin")
 public class InnerJoin implements Serializable {
@@ -16,6 +17,8 @@ public class InnerJoin implements Serializable {
     private long id;
     @NonNull
     private String iataCode;
+
+    //Getters and Setters
 
     @NonNull
     public long getId() {
@@ -34,6 +37,7 @@ public class InnerJoin implements Serializable {
         this.id = id;
     }
 
+    //Constructors
     public InnerJoin(@NonNull String IataCode){
         iataCode = IataCode;
     }

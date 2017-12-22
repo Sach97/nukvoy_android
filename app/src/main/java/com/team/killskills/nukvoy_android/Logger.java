@@ -7,7 +7,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-
+/*
+* A Helper class for debugging
+*/
 public class Logger {
 
     private static boolean isLogEnable = !BuildConfig.IS_PRODUCTION;

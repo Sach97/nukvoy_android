@@ -16,6 +16,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/*
+OkHttp offers a request / response API that makes developers life easier. It supports synchronous and asynchronous calls
+*/
 
 public class RestClient {
     public final static String HTTP_RESPONSE = "http-response";

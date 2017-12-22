@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 
 import com.team.killskills.nukvoy_android.dto.RouteDto;
 
+//Simple model
 public class InputRoute {
     private String iataCode;
     private String destination;
@@ -15,11 +16,13 @@ public class InputRoute {
     public InputRoute() {
     }
 
+    //Constructor
     public InputRoute(String iataCode, String destination){
         this.iataCode = iataCode;
         this.destination = destination;
     }
 
+    //Getter and Setters
     public String getIataCode() {
         return iataCode;
     }

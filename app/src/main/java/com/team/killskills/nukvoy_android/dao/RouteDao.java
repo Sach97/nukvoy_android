@@ -14,6 +14,10 @@ import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 /**
  * Created by Sacha on 13/12/2017.
  */
+/*
+  Creating Data Access Object
+  DAOs are responsible for defining the methods that access the database
+*/
 
 @Dao
 public interface RouteDao {

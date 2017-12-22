@@ -10,6 +10,10 @@ import java.util.ArrayList;
  * Created by Sacha on 01/11/2017.
  */
 
+
+/*
+* A little trick to work with ArrayList instead of Parcel / Extras
+* */
 public class AirportApplication extends Application {
 
     public ArrayList<Inputs> myGlobalArray = null;

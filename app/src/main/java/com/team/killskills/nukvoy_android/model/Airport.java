@@ -11,10 +11,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/*
+Annotating the class with @Entity and use the tableName property to set the name of the table.
+*/
+
 @Entity
 public class Airport implements Serializable{
-    /*@PrimaryKey(autoGenerate = true)
-    public int _id;*/
+
     @PrimaryKey
     @NonNull
     public String iataCode;
